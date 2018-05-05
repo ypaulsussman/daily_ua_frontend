@@ -1,0 +1,33 @@
+{
+    "extends": "airbnb",
+    "env": {
+        "browser": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 8,
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "rules": {
+        "max-len": [
+            2,
+            {
+                "code": 100,
+                "tabWidth": 2,
+                "ignoreUrls": true,
+                "ignoreComments": true
+            }
+        ],
+        "new-cap": [
+            2,
+            {
+                "capIsNewExceptions": [
+                    "Router"
+                ]
+            }
+        ],
+        "react/jsx-filename-extension": 0,
+        "import/no-named-as-default": 0
+    }
+}
