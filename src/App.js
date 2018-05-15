@@ -9,7 +9,7 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    fetch('https://arcane-citadel-28417.herokuapp.com/headlines')
+    fetch('https://avid-equator-203600.appspot.com/headlines')
       .then(response => response.json())
       .then(headlines => this.setState({ headlines }))
       .catch((error) => {
