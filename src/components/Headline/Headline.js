@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import './Headline.css';
+
+import './Headline.css';
 
 function Headline({ headline }) {
   return (
-    <div className="App">
+    <div className="headline-wrapper">
       <div>
         <h4>{headline.text_ua}</h4>
         <p>Google said: <code>{headline.text_en_google}</code></p>
