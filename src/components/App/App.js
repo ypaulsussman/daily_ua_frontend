@@ -11,13 +11,18 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    fetch('https://avid-equator-203600.appspot.com/headlines')
-      .then(response => response.json())
-      .then(headlines => this.setState({ headlines }))
-      .catch((error) => {
-        console.log(`A problem with your fetch: ${ // eslint-disable-line no-console
-          error.message}`);
-      });
+    this.getAllHeadlines();
+  }
+
+  getAllHeadlines = async () => {
+    try {
+      const response = await fetch('https://avid-equator-203600.appspot.com/headlines');
+      const headlines = await response.json();
+      this.setState({ headlines });
+    } catch (error) {
+      console.log(`A problem with your fetch: ${ // eslint-disable-line no-console
+        error.message}`);
+    }
   }
 
   render() {
