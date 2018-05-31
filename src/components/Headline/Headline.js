@@ -1,19 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import './Headline.css';
 
-function Headline({ headline }) {
-  return (
-    <div className="headline-wrapper">
-      <div>
-        <h4>{headline.text_ua}</h4>
-        <p>Google said: <code>{headline.text_en_google}</code></p>
-        <p>Y said: <code>{headline.text_en_user}</code></p>
-        <br />
+class Headline extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showGT: false,
+    };
+  }
+
+  toggleGT = () => {
+    this.setState({ showGT: !this.state.showGT });
+  }
+
+  render() {
+    const { headline } = this.props;
+    const { showGT } = this.state;
+    const displayGT = showGT ? 'hide' : 'show';
+    return (
+      <div className="headline-wrapper">
+        <div>
+          <h4>{headline.text_ua}</h4>
+          {
+            showGT ? (
+              <p>
+                Google said: <code>{headline.text_en_google}</code>
+              </p>
+            ) : null
+          }
+          <button
+            name={`${displayGT}GT`}
+            onClick={this.toggleGT}
+          >{`Click to ${displayGT} translation`}
+          </button>;
+          <p>Y said: <code>{headline.text_en_user}</code></p>
+          <br />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 Headline.defaultProps = {
