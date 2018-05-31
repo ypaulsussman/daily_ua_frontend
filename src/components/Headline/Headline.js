@@ -34,7 +34,7 @@ class Headline extends Component {
             name={`${displayGT}GT`}
             onClick={this.toggleGT}
           >{`Click to ${displayGT} translation`}
-          </button>;
+          </button>
           <p>Y said: <code>{headline.text_en_user}</code></p>
           <br />
         </div>
