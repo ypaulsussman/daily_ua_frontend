@@ -16,27 +16,40 @@ class Headline extends Component {
   }
 
   render() {
-    const { headline } = this.props;
+    const {
+      text_ua: textUA,
+      text_en_google: textENGoogle,
+      text_en_user: textENUser,
+    } = this.props.headline;
     const { showGT } = this.state;
     const displayGT = showGT ? 'hide' : 'show';
+
     return (
       <div className="headline-wrapper">
         <div>
-          <h4>{headline.text_ua}</h4>
+          <h4>{textUA}</h4>
+
           {
             showGT ? (
               <p>
-                Google said: <code>{headline.text_en_google}</code>
+                Google said: <code>{textENGoogle}</code>
               </p>
             ) : null
           }
+
           <button
-            name={`${displayGT}GT`}
+            name={`${displayGT}-google-translation`}
             onClick={this.toggleGT}
           >{`Click to ${displayGT} translation`}
           </button>
-          <p>Y said: <code>{headline.text_en_user}</code></p>
-          <br />
+
+          {
+            textENUser ? (
+              <p>
+                Y said: <code>{textENUser}</code>
+              </p>
+            ) : null
+          }
         </div>
       </div>
     );
