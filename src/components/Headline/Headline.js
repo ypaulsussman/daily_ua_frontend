@@ -29,13 +29,11 @@ class Headline extends Component {
         <div>
           <h4>{textUA}</h4>
 
-          {
-            showGT ? (
-              <p>
-                Google said: <code>{textENGoogle}</code>
-              </p>
-            ) : null
-          }
+          {showGT && (
+            <p>
+              Google said: <code>{textENGoogle}</code>
+            </p>
+          )}
 
           <button
             name={`${displayGT}-google-translation`}
@@ -43,13 +41,11 @@ class Headline extends Component {
           >{`Click to ${displayGT} translation`}
           </button>
 
-          {
-            textENUser ? (
-              <p>
-                Y said: <code>{textENUser}</code>
-              </p>
-            ) : null
-          }
+          {textENUser && (
+            <p>
+              Y said: <code>{textENUser}</code>
+            </p>
+          )}
         </div>
       </div>
     );
