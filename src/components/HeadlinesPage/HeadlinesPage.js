@@ -17,7 +17,7 @@ export default class HeadlinesPage extends Component {
 
   getAllHeadlines = async () => {
     try {
-      const response = await fetch('https://avid-equator-203600.appspot.com/headlines');
+      const response = await fetch(`https://avid-equator-203600.appspot.com/headlines?date_to_show=${this.props.dateToShow}`);
       const headlines = await response.json();
       this.setState({ headlines });
     } catch (error) {
@@ -28,10 +28,11 @@ export default class HeadlinesPage extends Component {
 
   render() {
     return (
-      <div className="dates-page">
+      <div className="headlines-wrapper">
         <button
           onClick={() => { this.props.updateHash('#date'); }}
-        >Go to Dates Page
+        >
+          Go to Dates Page
         </button>
 
         <h1>{this.props.dateToShow}</h1>

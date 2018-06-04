@@ -17,7 +17,9 @@ export default class DatesPage extends Component {
 
   getAllDates = async () => {
     try {
-      const response = await fetch('http://localhost:3001/');
+      // const response = await fetch('http://localhost:3001/');
+      const response = await fetch('https://avid-equator-203600.appspot.com/');
+      // replace above line after pushing server code to app engine
       const dates = await response.json();
       this.setState({ dates });
     } catch (error) {
@@ -28,18 +30,21 @@ export default class DatesPage extends Component {
 
   render() {
     return (
-      <div className="headlines-wrapper">
-        <div>
-          {this.state.dates.map(date => (
+      <div className="dates-wrapper">
+        {this.state.dates.map(date => (
+          <div className="date-wrapper">
             <button
               onClick={() => { this.props.updateHash('#headlines', date); }}
               key={date}
-            >{date}
+            >
+              {date}
             </button>
-          ))}
+            <br />
+            <br />
+          </div>
+        ))}
 
-          <a href="#headlines">Go to HeadlinesPage</a>
-        </div>
+
       </div>
     );
   }
