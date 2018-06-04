@@ -23,7 +23,7 @@ export default class MiniRouter extends Component {
 
   render() {
     if (this.props.mapping[this.state.hash]) { return this.props.mapping[this.state.hash]; }
-    return this.props.mapping['*'];
+    return this.props.mapping['#dates'];
   }
 }
 
@@ -35,6 +35,5 @@ MiniRouter.propTypes = {
   mapping: PropTypes.shape({
     '#dates': PropTypes.object,
     '#headlines': PropTypes.object,
-    '*': PropTypes.object,
   }),
 };
