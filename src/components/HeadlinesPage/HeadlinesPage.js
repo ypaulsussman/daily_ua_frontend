@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Headline from '../Headline/Headline';
 
 import './HeadlinesPage.css';
@@ -29,6 +30,7 @@ export default class HeadlinesPage extends Component {
     return (
       <div className="dates-page">
         <a href="#dates">DatesPage</a>
+        <h1>{this.props.dateToShow}</h1>
         {this.state.headlines.map(headline => (
           <Headline headline={headline} key={headline.id} />
         ))}
@@ -36,3 +38,11 @@ export default class HeadlinesPage extends Component {
     );
   }
 }
+
+HeadlinesPage.defaultProps = {
+  dateToShow: '',
+};
+
+HeadlinesPage.propTypes = {
+  dateToShow: PropTypes.string,
+};

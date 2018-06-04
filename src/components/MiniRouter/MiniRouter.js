@@ -1,5 +1,6 @@
-import { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import DatesPage from '../DatesPage/DatesPage';
+import HeadlinesPage from '../HeadlinesPage/HeadlinesPage';
 
 export default class MiniRouter extends Component {
   constructor(props) {
@@ -18,22 +19,19 @@ export default class MiniRouter extends Component {
   }
 
   updateHash = () => {
-    this.setState({ hash: window.location.hash });
+    this.setState({
+      hash: window.location.hash,
+      dateToShow: 'foo to tha bar',
+    });
   }
 
   render() {
-    if (this.props.mapping[this.state.hash]) { return this.props.mapping[this.state.hash]; }
-    return this.props.mapping['#dates'];
+    const miniRoutes = {
+      '#dates': <DatesPage />,
+      '#headlines': <HeadlinesPage dateToShow={this.state.dateToShow} />,
+    };
+
+    if (miniRoutes[this.state.hash]) return miniRoutes[this.state.hash];
+    return miniRoutes['#dates'];
   }
 }
-
-MiniRouter.defaultProps = {
-  mapping: {},
-};
-
-MiniRouter.propTypes = {
-  mapping: PropTypes.shape({
-    '#dates': PropTypes.object,
-    '#headlines': PropTypes.object,
-  }),
-};
