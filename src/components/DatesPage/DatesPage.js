@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Headline from '../Headline/Headline';
 
-import './App.css';
+import './DatesPage.css';
 
-class App extends Component {
+export default class DatesPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,13 +27,11 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="dates-page">
         {this.state.headlines.map(headline => (
-          <Headline headline={headline} />
+          <Headline headline={headline} key={headline.id} />
         ))}
       </div>
     );
   }
 }
-
-export default App;
