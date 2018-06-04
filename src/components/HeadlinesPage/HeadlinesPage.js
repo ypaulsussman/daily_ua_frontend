@@ -29,8 +29,13 @@ export default class HeadlinesPage extends Component {
   render() {
     return (
       <div className="dates-page">
-        <a href="#dates">DatesPage</a>
+        <button
+          onClick={() => { this.props.updateHash('#date'); }}
+        >Go to Dates Page
+        </button>
+
         <h1>{this.props.dateToShow}</h1>
+
         {this.state.headlines.map(headline => (
           <Headline headline={headline} key={headline.id} />
         ))}
@@ -45,4 +50,5 @@ HeadlinesPage.defaultProps = {
 
 HeadlinesPage.propTypes = {
   dateToShow: PropTypes.string,
+  updateHash: PropTypes.func.isRequired,
 };

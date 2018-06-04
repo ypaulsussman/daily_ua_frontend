@@ -10,25 +10,22 @@ export default class MiniRouter extends Component {
     };
   }
 
-  componentDidMount() {
-    window.addEventListener('hashchange', this.updateHash);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('hashchange', this.updateHash);
-  }
-
-  updateHash = () => {
+  updateHash = (hash, date) => {
     this.setState({
-      hash: window.location.hash,
-      dateToShow: 'foo to tha bar',
+      hash,
+      dateToShow: date,
     });
   }
 
   render() {
     const miniRoutes = {
-      '#dates': <DatesPage />,
-      '#headlines': <HeadlinesPage dateToShow={this.state.dateToShow} />,
+      '#dates': <DatesPage updateHash={this.updateHash} />,
+      '#headlines': (
+        <HeadlinesPage
+          dateToShow={this.state.dateToShow}
+          updateHash={this.updateHash}
+        />
+      ),
     };
 
     if (miniRoutes[this.state.hash]) return miniRoutes[this.state.hash];
